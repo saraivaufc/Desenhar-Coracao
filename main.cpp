@@ -1,8 +1,10 @@
 #include <iostream>
+#include <unistd.h>
+#include <cstdlib>
 
 using namespace std;
 
-int particionado;
+int particionado=0;
 
 void desenha_coracao_cima(int n){
 	int meio=(n/2)/3;
@@ -65,12 +67,22 @@ void desenha_coracao_baixo(int n){
 }
 
 
-int main(){
-	cout<<"Digite o tamanho:";
-	int tam;
-	cin>>tam;
+void desenha_coracao(int tam){
 	desenha_coracao_cima(tam);
 	desenha_coracao_meio(tam);
 	desenha_coracao_baixo(tam);
+}
+
+
+int main(){
+	for(int i=15; ; i++){
+		desenha_coracao(i);
+		particionado=0;
+		usleep(10000);
+		system("clear");
+		if(i>50){
+			i=15;
+		}
+	}
 	return 0;
 }
